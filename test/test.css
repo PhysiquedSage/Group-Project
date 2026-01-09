@@ -3,8 +3,8 @@
     background-color: white;
     width: 300px;
     height: 300px;
-    top: 100% - 150px;
-    left: 100% - 150px;
+    top: calc(50% - 150px);
+    left: calc(50% - 150px);
 }
 
 .back{
