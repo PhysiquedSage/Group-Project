@@ -26,3 +26,12 @@ button.LogBtn {
 .invisible {
     display: none;
 }
+
+/* make the top image responsive and appear in the center */
+.Top-Image{
+    width: 40rem;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
