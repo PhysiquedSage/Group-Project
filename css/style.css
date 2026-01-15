@@ -1,37 +1,156 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root{
+  --bg: black;
+  --panel: black;
+  --text: white;
+  --muted: grey;
+  --accent: red; 
+  --accent2: blue;
+}
+
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: radial-gradient(1200px 2000px at 40% -10%, rgba(255, 1, 13, 0.4), transparent 100%),
+              radial-gradient(900px 2000px at 60% 10%, rgba(42, 127, 255, 0.4), transparent 85%),
+              var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
 nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #333;
-    overflow: hidden;
-    color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.45));
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.nav-container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 14px 0;
 }
 
 nav a {
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  padding: 10px 6px;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+nav a:hover {
+  color: white;
+  transform: translateY(-1px);
 }
 
 button.LogBtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
+  margin-left: auto;
+  background: rgb(221, 0, 11);
+  color: white;
+  padding: 10px 16px;
+  border: 1px solid black;
+  border-radius: 100px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 0.15s ease, filter 0.15s ease;
 }
 
-.invisible {
-    display: none;
+button.LogBtn:hover {
+  transform: translateY(-1px);
 }
 
-/* make the top image responsive and appear in the center */
-.Top-Image{
-    width: 40rem;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    }
+button.LogBtn:active {
+  transform: translateY(0px);
+}
+
+main {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
+.Big-Movie {
+  margin-top: 14px;
+  border-radius: 22px;
+  overflow: hidden;
+  position: relative;
+
+}
+
+.Top-Image {
+  width: 100%;
+  height: 42vw;
+  max-height: 460px;
+  min-height: 240px;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.02);
+}
+
+.Big-Movie::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.25) 45%, rgba(0,0,0,0.15) 100% );
+}
+
+
+.Big-Movie::before {
+  content: "Featured";
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  z-index: 2;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  background: black;
+  padding: 8px 12px;
+  border-radius: 100px;
+  border: 1px solid grey;
+}
+
+.Movie-Block h2 { /*important*/
+  font-size: 1.1rem;
+  margin-top: 12px;
+  color: white;
+  letter-spacing: 0.2px;
+}
+
+.Movie-Block img {
+  width: 140px;
+  height: 210px;           
+  object-fit: cover;       
+  border-radius: 14px;
+  margin-right: 12px;
+  box-shadow: 0 10px 25px black;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.Movie-Block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  overflow-x: auto;
+  margin-top: 26px;
+  padding: 16px 14px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.534);
+  border: 1px solid black; 
+}
+
+.Movie-Block img:hover {
+  transform: scale(1.06);
+  box-shadow: 0 18px 40px black;
+}
