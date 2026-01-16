@@ -11,6 +11,32 @@ const formTitle = document.getElementById("formTitle");
 
 let isRegister = false;
 
+localStorage.setItem("movieData", JSON.stringify(data.movies));
+
+console.log("Movie Data:", JSON.parse(localStorage.getItem("movieData")));
+localStorage.setItem("currentUser", JSON.stringify({}));
+
+function login(username,password){
+    error = true
+    users = JSON.parse(localStorage.getItem("userData"))
+    for (let i = 0; i < users.length;i++ ){
+        if (username == users[i].username && password == users[i].password){
+            error = false
+            localStorage.setItem("currentUser", JSON.stringify(users[i]))
+            console.log("Login successful")
+            break
+        }
+    }
+    if (error){
+        console.log("Login failed")
+    }
+}
+
+function logout(){
+    localStorage.setItem("currentUser", JSON.stringify({}))
+    console.log("Logged out")
+}
+
 // abrir modal
 logBtn.addEventListener("click", () => {
   overlay.style.display = "flex";
