@@ -208,3 +208,6 @@ main {
 .invisible {
     display: none;
 }
+span {
+  cursor: pointer;
+}
