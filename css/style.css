@@ -204,3 +204,7 @@ main {
   text-align: center;
   font-size: 0.9rem;
 }
+
+span {
+  cursor: pointer;
+}
