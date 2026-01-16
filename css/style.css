@@ -154,3 +154,53 @@ main {
   transform: scale(1.06);
   box-shadow: 0 18px 40px black;
 }
+
+.login-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.login-modal {
+  background: black;
+  border: 1px solid grey;
+  border-radius: 22px;
+  padding: 26px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.login-modal h2 {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.login-modal input {
+  padding: 10px 14px;
+  border-radius: 100px;
+  border: 1px solid grey;
+  background: black;
+  color: white;
+}
+
+.login-modal button {
+  background: red;
+  border: none;
+  border-radius: 100px;
+  padding: 10px;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#loginMessage {
+  text-align: center;
+  font-size: 0.9rem;
+}
