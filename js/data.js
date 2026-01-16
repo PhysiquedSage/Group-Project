@@ -6,7 +6,7 @@ const data = {
         {username: "Diana", password: "diana123" }
     ],
     movies: [
-        {title: "Into the Spider-Verse", genre: "Action", img: "/img/Into the spider.jpg",},
+        {title: "Into the Spider-Verse", genre: ["Action"], img: "/img/Into the spider.jpg"},
     ]
 };
 

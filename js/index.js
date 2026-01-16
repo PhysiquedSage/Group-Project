@@ -15,6 +15,7 @@ const formTitle = document.getElementById("formTitle");
 
 
 let isRegister = false;
+let isLogged = false;
 
 function login(username,password){
     let error = true
@@ -24,6 +25,8 @@ function login(username,password){
             error = false
             localStorage.setItem("currentUser", JSON.stringify(users[i]))
             console.log("Login successful")
+            isLogged = true
+            logBtn.classList.add("invisible")
             break
         }
     }
@@ -32,11 +35,32 @@ function login(username,password){
     }
 }
 
-
+function CreateAcount(Username,Password) {
+    let exists = false
+    let users = JSON.parse(localStorage.getItem("userData"))
+    for (let i = 0; i < users.length;i++ ){
+        if (Username == users[i].username){
+            exists = true
+        }
+    }
+    if (!exists){
+        users.push({username: Username, password: Password})
+        localStorage.setItem("userData", JSON.stringify(users))
+        console.log("Account created")
+    }
+}
+if (isLogged){
+    logBtn.classList.add("invisible")
+}
+if(!isLogged){
+    logBtn.classList.remove("invisible")
+}
 
 function logout(){
     localStorage.setItem("currentUser", JSON.stringify({}))
     console.log("Logged out")
+    isLogged = false
+    logBtn.classList.remove("invisible")
 }
 
 // abrir modal
@@ -77,7 +101,7 @@ submitBtn.addEventListener("click", () => {
   else{login(user, pass);}
   if (isRegister) {
 
-    
+    CreateAcount(user, pass);
 
     message.textContent = "Conta criada com sucesso!";
     message.style.color = "lime";
