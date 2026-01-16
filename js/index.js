@@ -12,6 +12,7 @@ const submitBtn = document.getElementById("loginSubmit");
 const message = document.getElementById("loginMessage");
 const switchForm = document.getElementById("switchForm");
 const formTitle = document.getElementById("formTitle");
+const userBtn = document.getElementById("UserBtn");
 
 
 let isRegister = false;
@@ -27,6 +28,8 @@ function login(username,password){
             console.log("Login successful")
             isLogged = true
             logBtn.classList.add("invisible")
+            userBtn.textContent = users[i].username
+            userBtn.classList.remove("invisible")
             break
         }
     }
@@ -61,6 +64,7 @@ function logout(){
     console.log("Logged out")
     isLogged = false
     logBtn.classList.remove("invisible")
+    userBtn.classList.add("invisible")
 }
 
 // abrir modal
