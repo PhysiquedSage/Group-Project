@@ -1,6 +1,10 @@
 import data from "/js/data.js";
 localStorage.setItem("userData", JSON.stringify(data.users));
 console.log("User Data:", JSON.parse(localStorage.getItem("userData")));
+localStorage.setItem("movieData", JSON.stringify(data.movies));
+
+console.log("Movie Data:", JSON.parse(localStorage.getItem("movieData")));
+localStorage.setItem("currentUser", JSON.stringify({}));
 
 const logBtn = document.getElementById("log");
 const overlay = document.getElementById("loginOverlay");
@@ -10,11 +14,6 @@ const switchForm = document.getElementById("switchForm");
 const formTitle = document.getElementById("formTitle");
 
 let isRegister = false;
-
-localStorage.setItem("movieData", JSON.stringify(data.movies));
-
-console.log("Movie Data:", JSON.parse(localStorage.getItem("movieData")));
-localStorage.setItem("currentUser", JSON.stringify({}));
 
 function login(username,password){
     error = true
