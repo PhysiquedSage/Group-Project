@@ -13,11 +13,12 @@ const message = document.getElementById("loginMessage");
 const switchForm = document.getElementById("switchForm");
 const formTitle = document.getElementById("formTitle");
 
+
 let isRegister = false;
 
 function login(username,password){
-    error = true
-    users = JSON.parse(localStorage.getItem("userData"))
+    let error = true
+    let users = JSON.parse(localStorage.getItem("userData"))
     for (let i = 0; i < users.length;i++ ){
         if (username == users[i].username && password == users[i].password){
             error = false
@@ -30,6 +31,8 @@ function login(username,password){
         console.log("Login failed")
     }
 }
+
+
 
 function logout(){
     localStorage.setItem("currentUser", JSON.stringify({}))
@@ -71,11 +74,10 @@ submitBtn.addEventListener("click", () => {
     message.style.color = "red";
     return;
   }
-
+  else{login(user, pass);}
   if (isRegister) {
-    // guardar como strings simples
-    localStorage.setItem("username", user);
-    localStorage.setItem("password", pass);
+
+    
 
     message.textContent = "Conta criada com sucesso!";
     message.style.color = "lime";
@@ -109,3 +111,4 @@ submitBtn.addEventListener("click", () => {
     }
   }
 });
+
