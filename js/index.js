@@ -2,6 +2,7 @@ import data from "/js/data.js";
 localStorage.setItem("userData", JSON.stringify(data.users));
 console.log("User Data:", JSON.parse(localStorage.getItem("userData")));
 localStorage.setItem("movieData", JSON.stringify(data.movies));
+localStorage.setItem("SelectMovie", (null));
 
 console.log("Movie Data:", JSON.parse(localStorage.getItem("movieData")));
 localStorage.setItem("currentUser", JSON.stringify({}));
@@ -14,6 +15,7 @@ const message = document.getElementById("loginMessage");
 const switchForm = document.getElementById("switchForm");
 const formTitle = document.getElementById("formTitle");
 const userBtn = document.getElementById("UserBtn");
+const movieCardTemplate = document.getElementById("movieCardTemplate");
 
 
 let isRegister = false;
@@ -24,6 +26,20 @@ const cards = [];
 
 //genrate movie cards
 
+function generateMovieCards(genre) {
+    const movieContainer = document.getElementById(genre);
+    movies.forEach((movie) => {
+        if (!movie.genre.map(g => g.toLowerCase()).includes(genre.toLowerCase())) {
+            return;
+        }
+        const card = movieCardTemplate.content.cloneNode(true);
+        card.getElementById("movie-image").src = movie.img;
+        card.getElementById("movie-image").alt = movie.title;
+        card.getElementById("movie-title").textContent = movie.title;
+        movieContainer.appendChild(card);
+        cards.push(card);
+    });
+}
 
 
 function login(username,password){
@@ -148,3 +164,9 @@ submitBtn.addEventListener("click", () => {
   }
 });
 
+console.log("Generating movie cards...");
+
+generateMovieCards("action");
+generateMovieCards("comedy");
+generateMovieCards("Thriller");
+generateMovieCards("drama");

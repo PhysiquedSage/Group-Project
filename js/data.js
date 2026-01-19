@@ -7,7 +7,7 @@ const data = {
         {username: "jeff", password: "jeff" }
     ],
     movies: [
-        {title: "Into the Spider-Verse", genre: ["Action", "Animation", "Comedy"], img: "/img/Into the spider.jpg"},
+        {title: "Into the Spider-Verse", genre: ["Action", "Animation", "Comedy"], img: "/img/Into the spider.jpg" },
         {title: "The Interview", genre: ["Comedy", "Drama", "Thriller"], img: "/img/the-interview.jpg"},
         {title: "Pulp Fiction", genre: ["Crime", "Drama", "Thriller"], img: "/img/pulp-fiction.jpg"},
         {title: "John Wick", genre: ["Action", "Crime", "Thriller"], img: "/img/John Wick.jpg"},
@@ -19,5 +19,6 @@ const data = {
         {title: "1917", genre: ["War", "Drama", "History"], img: "/img/1917.jpg"}
     ]
 };
+"crime , drama , thriller , action , animation , comedy , mystery , adventure , sci-fi , fantasy , superhero , war , history"
 
 export default data;
