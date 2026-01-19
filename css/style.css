@@ -338,3 +338,175 @@ span {
 .user-actions .danger {
   background: darkred;
 }
+
+body {
+  font-family: system-ui, Arial, sans-serif;
+  background: radial-gradient(1200px 2000px at 40% -10%, rgba(255, 1, 13, 0.4), transparent 100%),
+              radial-gradient(900px 2000px at 60% 10%, rgba(42, 127, 255, 0.4), transparent 85%),
+              var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.45));
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 10px 0;
+}
+
+.nav-container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-container a, .nav-right a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  padding: 6px 10px;
+}
+
+.nav-container a:hover, .nav-right a:hover {
+  color: var(--accent);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* --- Login Modal --- */
+.login-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.login-modal {
+  background: var(--panel);
+  border: 1px solid grey;
+  border-radius: 22px;
+  padding: 32px 24px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.login-modal h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.login-modal input {
+  padding: 10px 14px;
+  border-radius: 100px;
+  border: 1px solid grey;
+  background: black;
+  color: white;
+}
+
+.login-modal button {
+  background: var(--accent);
+  border: none;
+  border-radius: 100px;
+  padding: 10px;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.login-modal button:hover {
+  transform: translateY(-2px);
+}
+
+.switch-form {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.switch-form span {
+  color: var(--accent);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.switch-form span:hover {
+  text-decoration: underline;
+}
+
+#loginMessage {
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* --- Movie Details --- */
+h1#MovieTitle {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.Movie-Detail-Image {
+  display: block;
+  max-width: 400px;
+  width: 90%;
+  margin: 18px auto;
+  border-radius: 16px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.7);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.Movie-Detail-Image:hover {
+  transform: scale(1.03);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.8);
+}
+
+#Description {
+  width: min(700px, 90%);
+  margin: 20px auto 50px;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: justify;
+  color: var(--text);
+  background: rgba(0,0,0,0.5);
+  padding: 16px 18px;
+  border-radius: 18px;
+  border: 1px solid black;
+}
+
+/* --- User Button --- */
+.UserBtn {
+  padding: 6px 14px;
+  border-radius: 100px;
+  border: 1px solid black;
+  background: var(--accent2);
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.UserBtn.invisible {
+  display: none;
+}
