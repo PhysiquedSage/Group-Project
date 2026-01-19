@@ -1,13 +1,3 @@
-import data from "/js/data.js";
-localStorage.setItem("userData", JSON.stringify(data.users));
-console.log("User Data:", JSON.parse(localStorage.getItem("userData")));
-localStorage.setItem("movieData", JSON.stringify(data.movies));
-localStorage.setItem("SelectMovie", (null));
-
-console.log("Movie Data:", JSON.parse(localStorage.getItem("movieData")));
-localStorage.setItem("currentUser", JSON.stringify({}));
-const movies = JSON.parse(localStorage.getItem("movieData"));
-
 const logBtn = document.getElementById("log");
 const overlay = document.getElementById("loginOverlay");
 const submitBtn = document.getElementById("loginSubmit");
@@ -15,40 +5,12 @@ const message = document.getElementById("loginMessage");
 const switchForm = document.getElementById("switchForm");
 const formTitle = document.getElementById("formTitle");
 const userBtn = document.getElementById("UserBtn");
-const movieCardTemplate = document.getElementById("movieCardTemplate");
+
+const movie = JSON.parse(localStorage.getItem("SelectMovie"));
 
 
 let isRegister = false;
 let isLogged = false;
-
-// Movie Cards
-const cards = [];
-
-//genrate movie cards
-
-function generateMovieCards(genre) {
-    const movieContainer = document.getElementById(genre);
-    movies.forEach((movie) => {
-        if (!movie.genre.map(g => g.toLowerCase()).includes(genre.toLowerCase())) {
-            return;
-        }
-        const card = movieCardTemplate.content.cloneNode(true);
-        const movieImage = card.getElementById("movie-image");
-        movieImage.src = movie.img;
-        movieImage.alt = movie.title;
-        card.getElementById("movie-title").textContent = movie.title;
-        movieContainer.appendChild(card);
-        
-        const cardElement = movieContainer.lastElementChild;
-        cardElement.addEventListener('click', () => {     // butom para a página destino
-            localStorage.setItem("SelectMovie", JSON.stringify(movie));
-            console.log(localStorage.getItem("SelectMovie", JSON.stringify(movie)));   //console log para verificar o destino atual, retirar depois
-            window.location.href = "movie.htm";  // redirecionar para a página do filme
-        });
-        cards.push(cardElement);
-    });
-}
-
 
 function login(username,password){
     let error = true
@@ -172,9 +134,10 @@ submitBtn.addEventListener("click", () => {
   }
 });
 
-console.log("Generating movie cards...");
+const MoviePoster = document.getElementById("MoviePoster");
+const MovieTitle = document.getElementById("MovieTitle");
+const MovieDescription = document.getElementById("Description");
 
-generateMovieCards("action");
-generateMovieCards("comedy");
-generateMovieCards("Thriller");
-generateMovieCards("drama");
+MoviePoster.src = movie.img;
+MovieTitle.textContent = movie.title;
+MovieDescription.textContent = movie.description;

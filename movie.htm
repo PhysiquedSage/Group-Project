@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+    <div class="nav-container">
+        <a href="index.html">Movies</a>
+        <a href="search.html">Search</a>
+        <a href="Novidades.html">News</a>
+        <a href="user.html">Utilizador</a>
+        <div class="nav-right">
+        <button class="LogBtn" id="log">Login</button>
+        <a href="User.htm" class="UserBtn"  id="UserBtn"></a>
+        </div>
+    </div>
+</nav>
+   
+
+    <div class="login-overlay" id="loginOverlay">
+      <div class="login-modal">
+        <h2 id="formTitle">Login</h2>
+
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+
+        <button id="loginSubmit">Entrar</button>
+
+        <p class="switch-form" id="switchForm">
+          Não tens conta? <span>Criar conta</span>
+        </p>
+
+        <p id="loginMessage"></p>
+      </div>
+    </div>
+    <h1 id="MovieTitle"></h1>
+    <img src="" alt="" id="MoviePoster" class="Movie-Detail-Image">
+    <div id="Description"></div>
+</main>
+<script type="module" src="js/movie.js"></script>
+</body>
+</html>
