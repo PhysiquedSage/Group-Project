@@ -33,11 +33,18 @@ function generateMovieCards(genre) {
             return;
         }
         const card = movieCardTemplate.content.cloneNode(true);
-        card.getElementById("movie-image").src = movie.img;
-        card.getElementById("movie-image").alt = movie.title;
+        const movieImage = card.getElementById("movie-image");
+        movieImage.src = movie.img;
+        movieImage.alt = movie.title;
         card.getElementById("movie-title").textContent = movie.title;
         movieContainer.appendChild(card);
-        cards.push(card);
+        
+        const cardElement = movieContainer.lastElementChild;
+        cardElement.addEventListener('click', () => {     // butom para a página destino
+            localStorage.setItem("SelectMovie", JSON.stringify(movie));
+            console.log(localStorage.getItem("SelectMovie", JSON.stringify(movie)));   //console log para verificar o destino atual, retirar depois
+        });
+        cards.push(cardElement);
     });
 }
 
