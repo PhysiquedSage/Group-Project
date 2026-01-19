@@ -29,9 +29,9 @@ function generateMovieCards() {
     const movieContainer = document.getElementById("action");
     movies.forEach((movie) => {
         const card = movieCardTemplate.content.cloneNode(true);
-        card.getElementById(".Movie-Image").src = movie.img;
-        card.getElementById(".Movie-Image").alt = movie.title;
-        card.getElementById(".Movie-Title").textContent = movie.title;
+        card.getElementById("movie-image").src = movie.img;
+        card.getElementById("movie-image").alt = movie.title;
+        card.getElementById("movie-title").textContent = movie.title;
         movieContainer.appendChild(card);
         cards.push(card);
     });
@@ -161,7 +161,5 @@ submitBtn.addEventListener("click", () => {
 });
 
 console.log("Generating movie cards...");
-
-"Loading failed for the module with source “http://127.0.0.1:5500/test/js/index.js”."
 
 generateMovieCards();
