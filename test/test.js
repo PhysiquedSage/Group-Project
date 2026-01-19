@@ -25,9 +25,12 @@ const cards = [];
 
 //genrate movie cards
 
-function generateMovieCards() {
-    const movieContainer = document.getElementById("action");
+function generateMovieCards(genre) {
+    const movieContainer = document.getElementById(genre);
     movies.forEach((movie) => {
+        if (!movie.genre.map(g => g.toLowerCase()).includes(genre.toLowerCase())) {
+            return;
+        }
         const card = movieCardTemplate.content.cloneNode(true);
         card.getElementById("movie-image").src = movie.img;
         card.getElementById("movie-image").alt = movie.title;
@@ -162,4 +165,5 @@ submitBtn.addEventListener("click", () => {
 
 console.log("Generating movie cards...");
 
-generateMovieCards();
+generateMovieCards("action");
+generateMovieCards("comedy");
