@@ -8,6 +8,10 @@ const userBtn = document.getElementById("UserBtn");
 
 const movie = JSON.parse(localStorage.getItem("SelectMovie"));
 
+if (movie === null) {
+    window.location.href = "index.html";  // redirecionar para a página inicial se nenhum filme estiver selecionado
+}
+
 
 let isRegister = false;
 let isLogged = false;
@@ -137,9 +141,11 @@ submitBtn.addEventListener("click", () => {
 const MoviePoster = document.getElementById("MoviePoster");
 const MovieTitle = document.getElementById("MovieTitle");
 const MovieDescription = document.getElementById("Description");
+const MovieDetails = document.getElementById("FullDescription");
+const MoviePlatforms = document.getElementById("Platforms");
 
 
 MoviePoster.src = movie.img;
 MovieTitle.textContent = movie.title;
 MovieDescription.textContent = movie.description;
-MovieDetails.textContent = movie.fullDescription;
+MoviePlatforms.textContent = "Available on: " + movie.platforms.join(", ");
