@@ -1,23 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test</title>
-    <link rel="stylesheet" href="test.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TEST PAGE</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <button type="button" id="btn">login</button>
-    <div class="back invisible" id="back"></div>
-    <div class="log invisible" id="log"></div>
-    <script src="test.js"></script>
+<nav>
+    <!-- Navigation links not sure if they work like this when using flask-->
+    <div class="nav-container">
+        <a href="about.htm">Movies</a>
+        <a href="Criar.htm">Search</a>
+        <a href="Novidades.htm">News</a>
+        <div class="nav-right">
+        <button class="LogBtn" id="log">Login</button>
+        <a href="User.htm" class="UserBtn"  id="UserBtn"></a>
+        </div>
+    </div>
+</nav>
+<main>
+<div class="Big-Movie">
+    <img src="/img/Into the spider.jpg" alt="top movie" class="Top-Image">
+</div>
 
+<template id="movieCardTemplate">
+    <div class="Movie-Card">
+        <img src="" alt="" class="Movie-Image" id="movie-image" >
+        <h3 class="Movie-Title" id="movie-title"></h3>
+    </div>
+</template>
     <div class="Movie-Block" id="action">
         <h2>Action Movies</h2>
+
     </div>
 
     <div class="Movie-Block" id="comedy">
         <h2>Comedy Movies</h2>
+        <img src="/img/hot-fuzz.jpg" alt="hot-fuzz" class="comedy">
+        <img src="/img/the-interview.jpg" alt="the-interview" class="comedy">
+        <img src="/img/deadpool.jpg" alt="deadpool" class="comedy">
+        <img src="/img/dnd.jpg" alt="dungeons-and-dragons" class="comedy">
+        <img src="/img/CI.jpg" alt="central-intelligence" class="comedy">
+        
     </div>
+<div class="login-overlay" id="loginOverlay">
+  <div class="login-modal">
+    <h2 id="formTitle">Login</h2>
+
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+
+    <button id="loginSubmit">Entrar</button>
+
+    <p class="switch-form" id="switchForm">
+      Não tens conta? <span>Criar conta</span>
+    </p>
+
+    <p id="loginMessage"></p>
+  </div>
+</div>
+
+
+</main>
+<script type="module" src="js/index.js"></script>
 </body>
 </html>

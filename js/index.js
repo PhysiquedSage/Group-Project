@@ -5,6 +5,7 @@ localStorage.setItem("movieData", JSON.stringify(data.movies));
 
 console.log("Movie Data:", JSON.parse(localStorage.getItem("movieData")));
 localStorage.setItem("currentUser", JSON.stringify({}));
+const movies = JSON.parse(localStorage.getItem("movieData"));
 
 const logBtn = document.getElementById("log");
 const overlay = document.getElementById("loginOverlay");
@@ -17,6 +18,13 @@ const userBtn = document.getElementById("UserBtn");
 
 let isRegister = false;
 let isLogged = false;
+
+// Movie Cards
+const cards = [];
+
+//genrate movie cards
+
+
 
 function login(username,password){
     let error = true
