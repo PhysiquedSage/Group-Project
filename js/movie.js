@@ -137,7 +137,7 @@ submitBtn.addEventListener("click", () => {
 const MoviePoster = document.getElementById("MoviePoster");
 const MovieTitle = document.getElementById("MovieTitle");
 const MovieDescription = document.getElementById("Description");
-const MovieDetails = document.getElementById("MovieDetails");
+
 
 MoviePoster.src = movie.img;
 MovieTitle.textContent = movie.title;
