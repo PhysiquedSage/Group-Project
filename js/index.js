@@ -4,8 +4,9 @@ console.log("User Data:", JSON.parse(localStorage.getItem("userData")));
 localStorage.setItem("movieData", JSON.stringify(data.movies));
 localStorage.setItem("SelectMovie", (null));
 
+
 console.log("Movie Data:", JSON.parse(localStorage.getItem("movieData")));
-localStorage.setItem("currentUser", JSON.stringify({}));
+
 const movies = JSON.parse(localStorage.getItem("movieData"));
 
 const logBtn = document.getElementById("log");
@@ -20,6 +21,11 @@ const movieCardTemplate = document.getElementById("movieCardTemplate");
 
 let isRegister = false;
 let isLogged = false;
+
+if (JSON.parse(localStorage.getItem("currentUser"))){
+    isLogged = true
+    userBtn.textContent = JSON.parse(localStorage.getItem("currentUser")).username
+}
 
 // Movie Cards
 const cards = [];
@@ -62,6 +68,7 @@ function login(username,password){
             logBtn.classList.add("invisible")
             userBtn.textContent = users[i].username
             userBtn.classList.remove("invisible")
+            overlay.style.display = "none"
             break
         }
     }

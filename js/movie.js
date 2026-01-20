@@ -16,6 +16,11 @@ if (movie === null) {
 let isRegister = false;
 let isLogged = false;
 
+if (JSON.parse(localStorage.getItem("currentUser"))){
+    isLogged = true
+    userBtn.textContent = JSON.parse(localStorage.getItem("currentUser")).username
+}
+
 function login(username,password){
     let error = true
     let users = JSON.parse(localStorage.getItem("userData"))
