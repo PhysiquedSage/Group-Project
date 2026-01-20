@@ -507,6 +507,6 @@ h1#MovieTitle {
   cursor: pointer;
 }
 
-.UserBtn.invisible {
+.invisible {
   display: none;
 }
