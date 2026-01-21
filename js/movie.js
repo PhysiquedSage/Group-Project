@@ -7,6 +7,10 @@ const formTitle = document.getElementById("formTitle");
 const userBtn = document.getElementById("UserBtn");
 
 const movie = JSON.parse(localStorage.getItem("SelectMovie"));
+const platformsData = JSON.parse(localStorage.getItem("platformData"));
+
+const platformsSection = document.getElementById("platformsSection");
+const platformTemplate = document.getElementById("platforms");
 
 if (movie === null) {
     window.location.href = "index.html";  // redirecionar para a página inicial se nenhum filme estiver selecionado
@@ -149,10 +153,84 @@ const MoviePoster = document.getElementById("MoviePoster");
 const MovieTitle = document.getElementById("MovieTitle");
 const MovieDescription = document.getElementById("Description");
 const MovieDetails = document.getElementById("FullDescription");
-const MoviePlatforms = document.getElementById("Platforms");
+const MoviePlatforms = document.getElementById("platformsSection");
 
 
 MoviePoster.src = movie.img;
 MovieTitle.textContent = movie.title;
 MovieDescription.textContent = movie.description;
-MoviePlatforms.textContent = "Available on: " + movie.platforms.join(", ");
+/*MoviePlatforms.textContent = "Available on: " + movie.platforms.join(", ");*/
+
+function savemovie(){
+    if (!isLogged){
+        alert("Please log in to save movies.");
+        return;
+    }
+    let exist = false
+    let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    let users = JSON.parse(localStorage.getItem("userData"));
+    for (let i = 0; i < currentUser.saved.length;i++ ){
+        if (movie.title == currentUser.saved[i]){
+            alert("Movie already saved.");
+            exist = true
+            break;
+        }
+    }
+    if (!exist){
+    
+    console.log("Saving movie:", movie.title);
+    currentUser.saved.push(movie.title);
+    localStorage.setItem("currentUser", JSON.stringify(currentUser));
+    // Update userData in localStorage
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].username === currentUser.username) {
+            users[i] = currentUser;
+            localStorage.setItem("userData", JSON.stringify(users));
+            break;
+        }}
+    }console.log("Movie saved:", movie.title);
+}
+
+const Savemovie = document.getElementById("saveMovie");
+const Unsavemovie = document.getElementById("unsaveMovie");
+Savemovie.addEventListener("click", savemovie);
+
+function unsavemovie(){
+    if (!isLogged){
+        alert("Please log in to unsave movies.");
+        return;
+    }
+    let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    let users = JSON.parse(localStorage.getItem("userData"));
+    for (let i = 0; i < currentUser.saved.length;i++ ){
+        if (movie.title == currentUser.saved[i]){
+            currentUser.saved.splice(i, 1);
+            localStorage.setItem("currentUser", JSON.stringify(currentUser));
+            // Update userData in localStorage
+            for (let j = 0; j < users.length; j++) {
+                if (users[j].username === currentUser.username) {
+                    users[j] = currentUser;
+                    localStorage.setItem("userData", JSON.stringify(users));
+                    break;
+                }}
+            console.log("Movie unsaved:", movie.title);
+            return;
+        }}}
+
+function generatelogos(){
+    movie.platforms.forEach((platform) => {
+        const plat = platformsData.find(p => p.name === platform);
+        if (plat) {
+            const card = platformTemplate.content.cloneNode(true);
+            const imgEl = card.querySelector(".platform-image");
+            const nameEl = card.querySelector(".platform-name");
+            imgEl.src = plat.img;
+            imgEl.alt = plat.name;
+            nameEl.textContent = plat.name;
+            platformsSection.appendChild(card);
+        }
+    });
+}
+      
+Unsavemovie.addEventListener("click", unsavemovie);
+generatelogos();

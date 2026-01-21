@@ -1,8 +1,12 @@
 import data from "/js/data.js";
-localStorage.setItem("userData", JSON.stringify(data.users));
-console.log("User Data:", JSON.parse(localStorage.getItem("userData")));
-localStorage.setItem("movieData", JSON.stringify(data.movies));
+
+if (!localStorage.getItem("userData")) {
+    localStorage.setItem("userData", JSON.stringify(data.users));
+    localStorage.setItem("movieData", JSON.stringify(data.movies));
+    localStorage.setItem("platformData", JSON.stringify(data.platforms));
+}    
 localStorage.setItem("SelectMovie", (null));
+console.log("User Data:", JSON.parse(localStorage.getItem("userData")));
 
 
 console.log("Movie Data:", JSON.parse(localStorage.getItem("movieData")));

@@ -19,7 +19,7 @@
         </div>
     </div>
 </nav>
-   
+  
 
     <div class="login-overlay" id="loginOverlay">
       <div class="login-modal">
@@ -37,17 +37,27 @@
         <p id="loginMessage"></p>
       </div>
     </div>
+  <main>
+    <template id="platforms">
+    <div class="platform-card">
+        <img src="" alt="" class="platform-image" id="platform-image">
+        <h4 class="platform-name" id="platform-name"></h4>
+    </div>
+    </template>
     <h1 id="MovieTitle"></h1>
     <img src="" alt="" id="MoviePoster" class="Movie-Detail-Image">
     <div id="Description"></div>
 
-    <div id="platforms">
     <h3>Available on:</h3>
+    <div id="platformsSection"></div>
     <div id="MovieDetails"></div>
-    </div>
-    <button id="saveMovie">save movie</button>
-    <button id="unsaveMovie">unsave movie</button>
-</main>
+    
+
+  <div class="center">
+    <button id="saveMovie" class="saveMovie">save movie</button>
+    <button id="unsaveMovie" class="unsaveMovie invisible">unsave movie</button>
+  </div>
+  </main>
 <script type="module" src="js/movie.js"></script>
 </body>
 </html>
