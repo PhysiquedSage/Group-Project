@@ -42,7 +42,7 @@ const cards = [];
 function generateMovieCards(genre) {
     const movieContainer = document.getElementById(genre);
     movies.forEach((movie) => {
-        if (!movie.genre.map(g => g.toLowerCase()).includes(genre.toLowerCase())) {
+        if (!movie.genre.some(g => g.toLowerCase() === genre.toLowerCase())) {
             return;
         }
         const card = movieCardTemplate.content.cloneNode(true);

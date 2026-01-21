@@ -159,7 +159,6 @@ const MoviePlatforms = document.getElementById("platformsSection");
 MoviePoster.src = movie.img;
 MovieTitle.textContent = movie.title;
 MovieDescription.textContent = movie.description;
-/*MoviePlatforms.textContent = "Available on: " + movie.platforms.join(", ");*/
 const Savemovie = document.getElementById("saveMovie");
 const Unsavemovie = document.getElementById("unsaveMovie");
 
