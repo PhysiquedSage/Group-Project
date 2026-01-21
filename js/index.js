@@ -41,6 +41,10 @@ const cards = [];
 
 function generateMovieCards(genre) {
     const movieContainer = document.getElementById(genre);
+    if (!movieContainer) {
+        console.warn(`Container for genre "${genre}" not found`);
+        return;
+    }
     for (let i = 0; i < movies.length; i++) {
         const movie = movies[i];
         let genreMatch = false;
@@ -54,10 +58,10 @@ function generateMovieCards(genre) {
             continue;
         }
         const card = movieCardTemplate.content.cloneNode(true);
-        const movieImage = card.getElementById("movie-image");
+        const movieImage = card.querySelector("#movie-image");
         movieImage.src = movie.img;
         movieImage.alt = movie.title;
-        card.getElementById("movie-title").textContent = movie.title;
+        card.querySelector("#movie-title").textContent = movie.title;
         movieContainer.appendChild(card);
         
         const cardElement = movieContainer.lastElementChild;
