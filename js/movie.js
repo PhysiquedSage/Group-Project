@@ -245,4 +245,20 @@ function generatelogos(){
 }
       
 Unsavemovie.addEventListener("click", unsavemovie);
+
+function populatePlatformSelect() {
+    const platSelect = document.getElementById("PlatSelect");
+    const availablePlatforms = platformsData.filter(platform => 
+        !movie.platforms.includes(platform.name)
+    );
+    
+    availablePlatforms.forEach(platform => {
+        const option = document.createElement("option");
+        option.value = platform.name;
+        option.textContent = platform.name;
+        platSelect.appendChild(option);
+    });
+}
+
 generatelogos();
+populatePlatformSelect();

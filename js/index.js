@@ -41,9 +41,17 @@ const cards = [];
 
 function generateMovieCards(genre) {
     const movieContainer = document.getElementById(genre);
-    movies.forEach((movie) => {
-        if (!movie.genre.some(g => g.toLowerCase() === genre.toLowerCase())) {
-            return;
+    for (let i = 0; i < movies.length; i++) {
+        const movie = movies[i];
+        let genreMatch = false;
+        for (let j = 0; j < movie.genre.length; j++) {
+            if (movie.genre[j].toLowerCase() === genre.toLowerCase()) {
+                genreMatch = true;
+                break;
+            }
+        }
+        if (!genreMatch) {
+            continue;
         }
         const card = movieCardTemplate.content.cloneNode(true);
         const movieImage = card.getElementById("movie-image");
@@ -59,7 +67,7 @@ function generateMovieCards(genre) {
             window.location.href = "movie.htm";  // redirecionar para a página do filme
         });
         cards.push(cardElement);
-    });
+    }
 }
 
 
