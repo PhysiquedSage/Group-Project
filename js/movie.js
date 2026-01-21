@@ -19,6 +19,8 @@ if (movie === null) {
 
 let isRegister = false;
 let isLogged = false;
+let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+let Edit = false;
 
 if (JSON.parse(localStorage.getItem("currentUser"))?.username){
     isLogged = true
