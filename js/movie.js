@@ -160,6 +160,16 @@ MoviePoster.src = movie.img;
 MovieTitle.textContent = movie.title;
 MovieDescription.textContent = movie.description;
 /*MoviePlatforms.textContent = "Available on: " + movie.platforms.join(", ");*/
+const Savemovie = document.getElementById("saveMovie");
+const Unsavemovie = document.getElementById("unsaveMovie");
+
+for (let i = 0; i < JSON.parse(localStorage.getItem("currentUser"))?.saved?.length;i++ ){
+    if (movie.title == JSON.parse(localStorage.getItem("currentUser")).saved[i]){
+        Savemovie.classList.add("invisible");
+        Unsavemovie.classList.remove("invisible");
+        break;
+    }
+}
 
 function savemovie(){
     if (!isLogged){
@@ -186,13 +196,14 @@ function savemovie(){
         if (users[i].username === currentUser.username) {
             users[i] = currentUser;
             localStorage.setItem("userData", JSON.stringify(users));
+            Savemovie.classList.add("invisible");
+            Unsavemovie.classList.remove("invisible");
             break;
         }}
     }console.log("Movie saved:", movie.title);
 }
 
-const Savemovie = document.getElementById("saveMovie");
-const Unsavemovie = document.getElementById("unsaveMovie");
+
 Savemovie.addEventListener("click", savemovie);
 
 function unsavemovie(){
@@ -211,6 +222,8 @@ function unsavemovie(){
                 if (users[j].username === currentUser.username) {
                     users[j] = currentUser;
                     localStorage.setItem("userData", JSON.stringify(users));
+                    Unsavemovie.classList.add("invisible");
+                    Savemovie.classList.remove("invisible");
                     break;
                 }}
             console.log("Movie unsaved:", movie.title);
