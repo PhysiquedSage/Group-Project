@@ -13,6 +13,8 @@ const platSelect = document.getElementById("PlatSelect");
 const editDescriptionDiv = document.getElementById("EditDescription");
 const addPlatDiv = document.getElementById("AddPlat");
 
+
+
 const movie = JSON.parse(localStorage.getItem("SelectMovie"));
 const platformsData = JSON.parse(localStorage.getItem("platformData"));
 
@@ -37,13 +39,19 @@ editBtn.addEventListener("click", () => {
     if (!Edit){
     editDescriptionDiv.classList.remove("invisible");
     addPlatDiv.classList.remove("invisible");
+    const deleteButtons = document.querySelectorAll("#deleteplat");
+    deleteButtons.forEach(btn => btn.classList.remove("invisible"));
+    Edit = true;
     }
     else{
     editDescriptionDiv.classList.add("invisible");
     addPlatDiv.classList.add("invisible");
+    const deleteButtons = document.querySelectorAll("#deleteplat");
+    deleteButtons.forEach(btn => btn.classList.add("invisible"));
+    Edit = false;
     }
 
-    Edit = !Edit;
+   
 });
 
 
@@ -176,6 +184,55 @@ submitBtn.addEventListener("click", () => {
   }
 });
 
+function saveDescription(){
+    if (!Edit){
+        alert("You must be in edit mode to save changes.");
+        return;
+    } 
+    movie.description = descriptionInput.value;
+    localStorage.setItem("SelectMovie", JSON.stringify(movie));
+    let movies = JSON.parse(localStorage.getItem("movieData"));
+    for (let i=0; i<movies.length; i++){
+        if (movies[i].title === movie.title){
+            movies[i].description = movie.description;
+            break;
+        }
+    }
+    localStorage.setItem("movieData", JSON.stringify(movies));
+    MovieDescription.textContent = movie.description;
+    console.log("Description saved:", movie.description);
+}
+saveDescriptionBtn.addEventListener("click", saveDescription);
+
+function deleteplatform(DelPlat){
+    if (!Edit){
+        alert("You must be in edit mode to delete platforms.");
+        return;
+    } 
+    const selectedPlatform = DelPlat;
+    let platforms = movie.platforms;
+    for (let i = 0; i < platforms.length; i++){
+        if (platforms[i] === selectedPlatform){
+            platforms.splice(i, 1);
+            break;
+        }
+    }
+    movie.platforms = platforms;
+    localStorage.setItem("SelectMovie", JSON.stringify(movie));
+    let movies = JSON.parse(localStorage.getItem("movieData"));
+    for (let i=0; i<movies.length; i++){
+        if (movies[i].title === movie.title){
+            movies[i].platforms = movie.platforms;
+            break;
+        }
+    }
+    localStorage.setItem("movieData", JSON.stringify(movies));
+    platformsSection.innerHTML = "";
+    generatelogos();
+    platSelect.innerHTML = "<option value='' disabled selected>Escolhe uma plataforma</option>";
+    populatePlatformSelect();
+}
+
 const MoviePoster = document.getElementById("MoviePoster");
 const MovieTitle = document.getElementById("MovieTitle");
 const MovieDescription = document.getElementById("Description");
@@ -263,9 +320,18 @@ function generatelogos(){
             const card = platformTemplate.content.cloneNode(true);
             const imgEl = card.querySelector(".platform-image");
             const nameEl = card.querySelector(".platform-name");
+            
             imgEl.src = plat.img;
             imgEl.alt = plat.name;
             nameEl.textContent = plat.name;
+            /*const deletePlatBtn = card.querySelector(".deleteplat");
+            deletePlatBtn.addEventListener("click", () => {
+                deleteplatform(plat.name);
+            });*/
+             const deletePlatBtn = card.querySelector("#deleteplat");
+            deletePlatBtn.addEventListener("click", () => {
+                deleteplatform(plat.name);
+            });
             platformsSection.appendChild(card);
         }
     });
@@ -286,6 +352,28 @@ function populatePlatformSelect() {
         platSelect.appendChild(option);
     });
 }
+
+function addPlatform() {
+    let movies = JSON.parse(localStorage.getItem("movieData"));
+    const selectedPlatform = platSelect.value;
+    if (selectedPlatform && !movie.platforms.includes(selectedPlatform)) {
+        movie.platforms.push(selectedPlatform);
+        localStorage.setItem("SelectMovie", JSON.stringify(movie));
+        for (let i=0; i<movies.length; i++){
+            if (movies[i].title === movie.title){
+                movies[i].platforms = movie.platforms;
+                break;
+            }
+        }
+        localStorage.setItem("movieData", JSON.stringify(movies));
+        platformsSection.innerHTML = "";
+        generatelogos();
+        platSelect.innerHTML = "<option value='' disabled selected>Escolhe uma plataforma</option>";
+        populatePlatformSelect();
+    }
+}
+
+platAddBtn.addEventListener("click", addPlatform);
 
 generatelogos();
 populatePlatformSelect();
