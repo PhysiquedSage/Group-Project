@@ -5,6 +5,13 @@ const message = document.getElementById("loginMessage");
 const switchForm = document.getElementById("switchForm");
 const formTitle = document.getElementById("formTitle");
 const userBtn = document.getElementById("UserBtn");
+const descriptionInput = document.getElementById("descriptionInput");
+const saveDescriptionBtn = document.getElementById("saveDescriptionBtn");
+const editBtn = document.getElementById("EditBtn");
+const platAddBtn = document.getElementById("platadd");
+const platSelect = document.getElementById("PlatSelect");
+const editDescriptionDiv = document.getElementById("EditDescription");
+const addPlatDiv = document.getElementById("AddPlat");
 
 const movie = JSON.parse(localStorage.getItem("SelectMovie"));
 const platformsData = JSON.parse(localStorage.getItem("platformData"));
@@ -21,6 +28,24 @@ let isRegister = false;
 let isLogged = false;
 let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 let Edit = false;
+
+if (currentUser.admin){
+    editBtn.classList.remove("invisible")
+}
+
+editBtn.addEventListener("click", () => {
+    if (!Edit){
+    editDescriptionDiv.classList.remove("invisible");
+    addPlatDiv.classList.remove("invisible");
+    }
+    else{
+    editDescriptionDiv.classList.add("invisible");
+    addPlatDiv.classList.add("invisible");
+    }
+
+    Edit = !Edit;
+});
+
 
 if (JSON.parse(localStorage.getItem("currentUser"))?.username){
     isLogged = true
