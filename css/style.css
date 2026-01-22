@@ -525,6 +525,7 @@ h1#MovieTitle {
   border: 1px solid black;
 }
 
+/* --- User Button --- */
 .UserBtn {
   padding: 6px 14px;
   border-radius: 100px;
@@ -545,6 +546,7 @@ h1#MovieTitle {
   justify-content: center;
 }
 
+/* --- Platform Logos --- */
 #platformsSection {
   display: flex;
   flex-wrap: wrap;
@@ -633,8 +635,17 @@ h1#MovieTitle {
     width: 60px;
     height: 60px;
   }
-}
 
+  .addMovieForm {
+    padding: 18px;
+    margin: 20px auto;
+  }
+
+  .genresContainer,
+  .platformsContainer {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+}
 
 @media (min-width: 600px) and (max-width: 900px) {
 
@@ -667,5 +678,9 @@ h1#MovieTitle {
   .platform-image {
     width: 70px;
     height: 70px;
+  }
+
+  .addMovieForm {
+    max-width: 500px;
   }
 }
