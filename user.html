@@ -29,10 +29,46 @@
     <h1 id="usernameDisplay">User</h1>
     <p class="user-subtitle">Welcome to your account</p>
 
-    <div class="user-actions">
-      <button>Edit Profile</button>
+    <div class="user-actions" id="addmovie">
+      <button id="toggleAddMovieBtn">add movie</button>
     </div>
   </section>
+  <div class="addMovieForm" id="addMovieForm">
+    <h2>Add Movie to Favorites</h2>
+    <input type="text" id="movieTitleInput" placeholder="Enter movie title">
+    <input type="text" name="" id="descInput" placeholder="Enter movie description">
+    
+    <h3>Select Genres:</h3>
+    <div class="genresContainer" id="genresContainer">
+      <label><input type="checkbox" name="genre" value="Action"> Action</label>
+      <label><input type="checkbox" name="genre" value="Comedy"> Comedy</label>
+      <label><input type="checkbox" name="genre" value="Drama"> Drama</label>
+      <label><input type="checkbox" name="genre" value="Thriller"> Thriller</label>
+      <label><input type="checkbox" name="genre" value="Animation"> Animation</label>
+      <label><input type="checkbox" name="genre" value="Adventure"> Adventure</label>
+      <label><input type="checkbox" name="genre" value="Sci-Fi"> Sci-Fi</label>
+      <label><input type="checkbox" name="genre" value="Fantasy"> Fantasy</label>
+      <label><input type="checkbox" name="genre" value="Crime"> Crime</label>
+      <label><input type="checkbox" name="genre" value="Mystery"> Mystery</label>
+    </div>
+    
+    <h3>Select Platforms:</h3>
+    <div class="platformsContainer" id="platformsContainer">
+      <label><input type="checkbox" name="platform" value="Netflix"> Netflix</label>
+      <label><input type="checkbox" name="platform" value="Amazon Prime Video"> Amazon Prime Video</label>
+      <label><input type="checkbox" name="platform" value="Disney+"> Disney+</label>
+      <label><input type="checkbox" name="platform" value="Google Play"> Google Play</label>
+      <label><input type="checkbox" name="platform" value="YouTube"> YouTube</label>
+      <label><input type="checkbox" name="platform" value="Hulu"> Hulu</label>
+      <label><input type="checkbox" name="platform" value="HBO"> HBO</label>
+      <label><input type="checkbox" name="platform" value="Apple TV+"> Apple TV+</label>
+      <label><input type="checkbox" name="platform" value="Paramount+"> Paramount+</label>
+    </div>
+
+    <button class="addMovieBtn" id="addMovieBtn">Add Movie</button>
+    <button class="cancelAddMovieBtn" id="cancelAddMovieBtn">Cancel</button>
+
+  </div>
   <template id="movieCardTemplate">
     <div class="Movie-Card">
         <img src="" alt="" class="Movie-Image" id="movie-image" >
