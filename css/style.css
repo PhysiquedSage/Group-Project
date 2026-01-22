@@ -643,6 +643,16 @@ h1#MovieTitle {
   }
 }
 
+.addMovieForm {
+    padding: 18px;
+    margin: 20px auto;
+  }
+
+  .genresContainer,
+  .platformsContainer {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+
 @media (min-width: 600px) and (max-width: 900px) {
 
   .nav-container {
