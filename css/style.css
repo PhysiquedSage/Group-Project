@@ -1,3 +1,4 @@
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -225,6 +226,102 @@ main {
     display: none;
 }
 
+
+.EditBtn {
+  background: var(--accent);
+  color: white;
+  padding: 10px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 100px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.EditBtn:hover {
+  background: rgb(255, 0, 20);
+  transform: translateY(-2px);
+}
+
+.EditBtn:active {
+  transform: translateY(0px);
+
+}
+
+.TopBtn, #platadd {
+  background: var(--accent); 
+  color: white;
+  padding: 10px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 100px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.TopBtn:hover {
+  background: rgb(255, 0, 20);
+  transform: translateY(-2px);
+}
+
+.TopBtn:active {
+  transform: translateY(0px);
+}
+
+.EditDescription {
+  flex-direction: column;
+  align-items: center;   /* centers both elements */
+  gap: 12px;             /* small space between them */
+}
+
+.EditDescription.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+
+
+#descriptionInput {
+  display: inline;
+  background: black;
+  color: white;
+  border: 1px solid grey;
+  border-radius: 8px;
+  padding: 12px;
+  font-family: inherit;
+  font-size: 1rem;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+#descriptionInput:focus {
+  border-color: var(--accent);
+}
+
+
+#saveDescriptionBtn {
+  background: var(--accent);
+  color: white;
+  padding: 10px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 100px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+#saveDescriptionBtn:hover {
+  background: rgb(255, 0, 20); 
+  transform: translateY(-2px);
+}
+
+#saveDescriptionBtn:active {
+  transform: translateY(0px);
+}
+
 .saveMovie, .unsaveMovie {
   background: rgb(221, 0, 11);
   color: white;
@@ -367,105 +464,6 @@ span {
 .user-actions .danger {
   background: darkred;
 }
-
-body {
-  font-family: system-ui, Arial, sans-serif;
-  background: radial-gradient(1200px 2000px at 40% -10%, rgba(255, 1, 13, 0.4), transparent 100%),
-              radial-gradient(900px 2000px at 60% 10%, rgba(42, 127, 255, 0.4), transparent 85%),
-              var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-}
-
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.45));
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  padding: 10px 0;
-}
-
-.nav-container {
-  width: min(1100px, 92%);
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.nav-container a, .nav-right a {
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  letter-spacing: 0.2px;
-  padding: 6px 10px;
-}
-
-.nav-container a:hover, .nav-right a:hover {
-  color: var(--accent);
-}
-
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-/* --- Login Modal --- */
-.login-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(8px);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 200;
-}
-
-.login-modal {
-  background: var(--panel);
-  border: 1px solid grey;
-  border-radius: 22px;
-  padding: 32px 24px;
-  width: 320px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.login-modal h2 {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.login-modal input {
-  padding: 10px 14px;
-  border-radius: 100px;
-  border: 1px solid grey;
-  background: black;
-  color: white;
-}
-
-.login-modal button {
-  background: var(--accent);
-  border: none;
-  border-radius: 100px;
-  padding: 10px;
-  color: white;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform 0.15s ease;
-}
-
-.login-modal button:hover {
-  transform: translateY(-2px);
-}
-
 .switch-form {
   text-align: center;
   font-size: 0.85rem;
@@ -532,10 +530,6 @@ h1#MovieTitle {
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-}
-
-.invisible {
-  display: none;
 }
 
 .center{
@@ -642,16 +636,6 @@ h1#MovieTitle {
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   }
 }
-
-.addMovieForm {
-    padding: 18px;
-    margin: 20px auto;
-  }
-
-  .genresContainer,
-  .platformsContainer {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  }
 
 @media (min-width: 600px) and (max-width: 900px) {
 

@@ -70,25 +70,37 @@ function toggleTopStatus(){
 TopBtn.addEventListener("click", toggleTopStatus);
 
 editBtn.addEventListener("click", () => {
-    if (!Edit){
-    editDescriptionDiv.classList.remove("invisible");
-    addPlatDiv.classList.remove("invisible");
-    const deleteButtons = document.querySelectorAll("#deleteplat");
-    deleteButtons.forEach(btn => btn.classList.remove("invisible"));
-    TopBtn.classList.remove("invisible");
-    Edit = true;
-    }
-    else{
-    editDescriptionDiv.classList.add("invisible");
-    addPlatDiv.classList.add("invisible");
-    const deleteButtons = document.querySelectorAll("#deleteplat");
-    deleteButtons.forEach(btn => btn.classList.add("invisible"));
-    TopBtn.classList.add("invisible");
-    Edit = false;
-    }
+    if (!Edit) {
+        editDescriptionDiv.classList.remove("invisible");
+        editDescriptionDiv.classList.add("active");
 
-   
+        addPlatDiv.classList.remove("invisible");
+        addPlatDiv.classList.add("active");
+
+        document.querySelectorAll("#deleteplat").forEach(btn => {
+            btn.classList.remove("invisible");
+        });
+
+        TopBtn.classList.remove("invisible");
+
+        Edit = true;
+    } else {
+        editDescriptionDiv.classList.add("invisible");
+        editDescriptionDiv.classList.remove("active");
+
+        addPlatDiv.classList.add("invisible");
+        addPlatDiv.classList.remove("active");
+
+        document.querySelectorAll("#deleteplat").forEach(btn => {
+            btn.classList.add("invisible");
+        });
+
+        TopBtn.classList.add("invisible");
+
+        Edit = false;
+    }
 });
+
 
 
 if (JSON.parse(localStorage.getItem("currentUser"))?.username){
