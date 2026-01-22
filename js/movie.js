@@ -12,6 +12,7 @@ const platAddBtn = document.getElementById("platadd");
 const platSelect = document.getElementById("PlatSelect");
 const editDescriptionDiv = document.getElementById("EditDescription");
 const addPlatDiv = document.getElementById("AddPlat");
+const TopBtn = document.getElementById("TopBtn");
 
 
 
@@ -26,6 +27,7 @@ if (movie === null) {
 }
 
 
+
 let isRegister = false;
 let isLogged = false;
 let currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -35,12 +37,41 @@ if (currentUser.admin){
     editBtn.classList.remove("invisible")
 }
 
+if (movie.top){
+    TopBtn.textContent = "Remove from Top"
+}
+else{
+    TopBtn.textContent = "Add to Top"
+}
+
+function toggleTopStatus(){
+    let movies = JSON.parse(localStorage.getItem("movieData"));
+    if (movie.top){
+        movie.top = false;
+        TopBtn.textContent = "Add to Top"
+    }
+    else{
+        movie.top = true;
+        TopBtn.textContent = "Remove from Top"
+    }
+    localStorage.setItem("SelectMovie", JSON.stringify(movie));
+    for (let i=0; i<movies.length; i++){
+        if (movies[i].title === movie.title){
+            movies[i].top = movie.top;
+            break;
+        }
+    }
+    localStorage.setItem("movieData", JSON.stringify(movies));
+}
+TopBtn.addEventListener("click", toggleTopStatus);
+
 editBtn.addEventListener("click", () => {
     if (!Edit){
     editDescriptionDiv.classList.remove("invisible");
     addPlatDiv.classList.remove("invisible");
     const deleteButtons = document.querySelectorAll("#deleteplat");
     deleteButtons.forEach(btn => btn.classList.remove("invisible"));
+    TopBtn.classList.remove("invisible");
     Edit = true;
     }
     else{
@@ -48,6 +79,7 @@ editBtn.addEventListener("click", () => {
     addPlatDiv.classList.add("invisible");
     const deleteButtons = document.querySelectorAll("#deleteplat");
     deleteButtons.forEach(btn => btn.classList.add("invisible"));
+    TopBtn.classList.add("invisible");
     Edit = false;
     }
 

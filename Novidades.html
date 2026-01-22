@@ -3,50 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Novidades</title>
+  <title>News</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <nav>
-  <div class="nav-container">
-    <a href="index.html">Movies</a>
-    <a href="Criar.html">Search</a>
-    <a href="Novidades.html">News</a>
-    <a href="user.html">Utilizador</a>
-    <button class="LogBtn">Login</button>
-  </div>
+    <!-- Navigation links not sure if they work like this when using flask-->
+    <div class="nav-container">
+        <a href="index.html">Movies</a>
+        <a href="search.html">Search</a>
+        <a href="Novidades.html">News</a>
+        <a href="user.html">User</a>
+        <div class="nav-right">
+        <button class="LogBtn" id="log">Login</button>
+        <a href="User.html" class="UserBtn invisible" id="UserBtn"></a>
+        </div>
+    </div>
 </nav>
 
+<div class="login-overlay" id="loginOverlay">
+  <div class="login-modal">
+    <h2 id="formTitle">Login</h2>
+
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+
+    <button id="loginSubmit">Sign In</button>
+
+    <p class="switch-form" id="switchForm">
+      Don't have an account? <span>Create account</span>
+    </p>
+
+    <p id="loginMessage"></p>
+  </div>
+</div>
+
 <main>
-  <h1 class="page-title">Novidades</h1>
+<template id="movieCardTemplate">
+    <div class="Movie-Card">
+        <img src="" alt="" class="Movie-Image" id="movie-image" >
+        <h3 class="Movie-Title" id="movie-title"></h3>
+    </div>
+</template>
+  <h1 class="page-title">News</h1>
 
   <section class="news-section">
-    <h2>Em Destaque</h2>
-
-    <div class="news-grid">
-      <div class="news-card">
-        <img src="img/movies/dune2.jpg" alt="Dune 2">
-        <h3>Dune: Part Two</h3>
-        <p>Continuação épica da saga de Arrakis.</p>
-      </div>
-
-      <div class="news-card">
-        <img src="img/movies/joker2.jpg" alt="Joker 2">
-        <h3>Joker: Folie à Deux</h3>
-        <p>Uma visão mais musical e perturbadora.</p>
-      </div>
-
-      <div class="news-card">
-        <img src="img/movies/oppenheimer.jpg" alt="Oppenheimer">
-        <h3>Oppenheimer</h3>
-        <p>O peso da ciência e da consciência.</p>
-      </div>
-    </div>
+    <h2>Featured</h2>
+    <div class="Movie-Block" id="TopMovies"></div>
   </section>
 
   <section class="news-section">
-    <h2>Recentemente Adicionados</h2>
+    <h2>Recently Added</h2>
 
     <div class="news-grid small">
       <div class="news-card">
@@ -71,6 +79,6 @@
     </div>
   </section>
 </main>
-
+<script type="module" src="js/novidades.js"></script>
 </body>
 </html>
