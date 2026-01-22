@@ -1,4 +1,3 @@
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -488,7 +487,6 @@ nav {
   font-size: 0.9rem;
 }
 
-/* --- Movie Details --- */
 h1#MovieTitle {
   text-align: center;
   margin-top: 24px;
@@ -525,7 +523,6 @@ h1#MovieTitle {
   border: 1px solid black;
 }
 
-/* --- User Button --- */
 .UserBtn {
   padding: 6px 14px;
   border-radius: 100px;
@@ -546,7 +543,6 @@ h1#MovieTitle {
   justify-content: center;
 }
 
-/* --- Platform Logos --- */
 #platformsSection {
   display: flex;
   flex-wrap: wrap;
