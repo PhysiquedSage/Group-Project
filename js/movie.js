@@ -26,7 +26,11 @@ if (movie === null) {
     window.location.href = "index.html";  // redirecionar para a página inicial se nenhum filme estiver selecionado
 }
 
+const isadmin = JSON.parse(localStorage.getItem("currentUser"))?.admin || false;
 
+if (isadmin){
+    editBtn.classList.remove("invisible")
+}
 
 let isRegister = false;
 let isLogged = false;
@@ -123,7 +127,7 @@ function CreateAcount(Username,Password) {
         }
     }
     if (!exists){
-        users.push({username: Username, password: Password})
+        users.push({username: Username, password: Password, admin: false, saved: []})
         localStorage.setItem("userData", JSON.stringify(users))
         console.log("Account created")
     }

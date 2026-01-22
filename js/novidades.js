@@ -50,7 +50,7 @@ function CreateAcount(Username,Password) {
         }
     }
     if (!exists){
-        users.push({username: Username, password: Password})
+        users.push({username: Username, password: Password, admin: false, saved: []})
         localStorage.setItem("userData", JSON.stringify(users))
         console.log("Account created")
     }
