@@ -37,7 +37,7 @@ let isLogged = false;
 let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 let Edit = false;
 
-if (currentUser.admin){
+if (currentUser && currentUser.admin){
     editBtn.classList.remove("invisible")
 }
 
@@ -122,6 +122,7 @@ function login(username,password){
             logBtn.classList.add("invisible")
             userBtn.textContent = users[i].username
             userBtn.classList.remove("invisible")
+            overlay.style.display = "none"
             break
         }
     }

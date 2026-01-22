@@ -53,6 +53,7 @@ function login(username,password){
             logBtn.classList.add("invisible")
             userBtn.textContent = users[i].username
             userBtn.classList.remove("invisible")
+            overlay.style.display = "none"
             break
         }
     }
