@@ -30,6 +30,11 @@ let isLogged = false;
 if (JSON.parse(localStorage.getItem("currentUser"))){
     isLogged = true
     usernameDisplay.textContent = JSON.parse(localStorage.getItem("currentUser")).username
+
+}
+const currentUser = JSON.parse(localStorage.getItem("currentUser"))
+if (currentUser?.admin){
+    document.getElementById("addmovie").classList.remove("invisible");
 }
 
 // Movie Cards
@@ -204,3 +209,5 @@ cancelAddMovieBtn.addEventListener("click", function() {
 
 
 addmovieBtn.addEventListener("click", addMovie);
+
+console.log(isLogged)
